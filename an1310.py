@@ -41,17 +41,17 @@ def main(port, hexFile):
 	print('Connecting...')
 	bl.connect()
 	print('Found device ' + bl.dev_info[2] + ', bootloader v.' + str(bl.bl_info['version_major']) + '.' + str(bl.bl_info['version_minor']))
-	if hexFile is None:
-		print('No hex file given, exiting.')
-		return 0
-	bl.load_hex_file(hexFile)
-	print('Writing...')
-	bl.write()
-	print('Verifying...')
-	bl.verify()
-	print('Running...')
-	bl.run()
-	print('Launching serial terminal...')
+	#if hexFile is None:
+	#	print('No hex file given, exiting.')
+	#	return 0
+	#bl.load_hex_file(hexFile)
+	#print('Writing...')
+	#bl.write()
+	#print('Verifying...')
+	#bl.verify()
+	#print('Running...')
+	#bl.run()
+	#print('Launching serial terminal...')
 
 	# run serial.tools.miniterm (some code copied from miniterm's main function)
 	bl.port.baudrate = 19200  # reuse our port without closing and reopening it
@@ -365,6 +365,7 @@ class Bootloader:
 		# 0: device_id, 1: family_id, 2: PARTNAME, 3: BYTESPERWORDFLASH, 4: WRITEFLASHBLOCKSIZE, 5: ERASEFLASHBLOCKSIZE, 6: STARTFLASH, 7: ENDFLASH,
 		# 8: STARTEE, 9: ENDEE, 10: STARTUSER, 11: ENDUSER, 12: STARTCONFIG, 13: ENDCONFIG, 14: STARTDEVICEID, 15: ENDDEVICEID, 16: DEVICEIDMASK, 17: STARTGPR, 18: ENDGPR
 		(260,2,'PIC16F887',2,8,16,0,8192,8448,8704,8192,8196,8199,8201,8198,8199,16352,0,512),
+		(652,4,'PIC18F67K22',2,128,128,0,131072,15728640,15729664,2097152,2097160,3145728,3145742,4194302,4194304,65504,0,3862),
 	)
 
 
